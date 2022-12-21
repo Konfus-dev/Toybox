@@ -1,0 +1,15 @@
+[submodule "3rd Party/spdlog"]
+	path = 3rd Party/spdlog
+	url = https://github.com/Martian-Child/spdlog.git
+[submodule "3rd Party/bgfx"]
+	path = 3rd Party/bgfx
+	url = https://github.com/Martian-Child/bgfx.git
+[submodule "3rd Party/glfw"]
+	path = 3rd Party/glfw
+	url = https://github.com/Martian-Child/glfw.git
+[submodule "3rd Party/bx"]
+	path = 3rd Party/bx
+	url = https://github.com/bkaradzic/bx.git
+[submodule "3rd Party/bimg"]
+	path = 3rd Party/bimg
+	url = https://github.com/bkaradzic/bimg.git
