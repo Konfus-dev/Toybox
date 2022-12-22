@@ -2,7 +2,7 @@ project "Sandbox"
     kind "ConsoleApp"
     language "C++"
     cppdialect "C++17"
-    staticruntime "On"
+    staticruntime "off"
 
     targetdir ("../Build/bin/" .. outputdir .. "/%{prj.name}")
     objdir    ("../Build/obj/" .. outputdir .. "/%{prj.name}")
@@ -17,10 +17,10 @@ project "Sandbox"
 
     includedirs
     {
-        "%{IncludeDir.Engine}",
         "%{IncludeDir.spdlog}",
         "%{IncludeDir.glfw}",
-        "%{IncludeDir.bgfx}"
+        "%{IncludeDir.bgfx}",
+        "%{IncludeDir.Engine}"
     }
 
     links
@@ -31,81 +31,26 @@ project "Sandbox"
     -- Platforms
     filter "system:windows"
         systemversion "latest"
-		files
-		{
-			"src/win32_*.*",
-			"src/wgl_context.*"
-		}
-        includedirs 
-        { 
-            "%{IncludeDir.bgfx}/compat/mingw"
-        }
-        links 
-        { 
-            "gdi32", 
-            "kernel32", 
-            "psapi"
-        }
-        defines
-        {
-            "TBX_PLATFORM_WINDOWS",
-            "_GLFW_WIN32"
-        }
 
-    filter "system:linux"
-        links 
-        { 
-            "dl", 
-            "GL", 
-            "pthread", 
-            "X11" 
-        }
         defines
         {
-            "TBX_PLATFORM_LINUX"
-        }
-
-    filter "system:macosx"
-        systemversion "latest"
-        includedirs 
-        { 
-            "%{IncludeDir.bgfx}/compat/osx"
-        }
-        links 
-        { 
-            "QuartzCore.framework", 
-            "Metal.framework", 
-            "Cocoa.framework",
-            "IOKit.framework",
-            "CoreVideo.framework" 
-        }
-        defines
-        {
-            "TBX_PLATFORM_OSX"
+            "TBX_PLATFORM_WINDOWS"
         }
     
     -- Configurations
     filter "configurations:Debug"
-        systemversion "latest"
+        defines "TBX_DEBUG"
         symbols "On"
+
         defines
         {
-            "TBX_DEBUG",
             "TBX_ASSERTS_ENABLED"
         }
 
     filter "configurations:Release"
+        defines "TBX_RELEASE"
         optimize "On"
-        symbols "On"
-        defines
-        {
-            "TBX_RELEASE"
-        }
 
-    filter "configurations:Dist"
+    filter "configurations:Release"
+        defines "TBX_DIST"
         optimize "On"
-        symbols "Off"
-        defines 
-        {
-            "TBX_DIST"
-        }

@@ -11,6 +11,6 @@
         #define TOYBOX_API
     #endif
 #else
-    #error Toybox only support windows!
+    #define TOYBOX_API
 #endif
 

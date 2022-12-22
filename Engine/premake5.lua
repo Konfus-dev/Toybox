@@ -2,7 +2,7 @@ project "Engine"
     kind "StaticLib"
     language "C++"
     cppdialect "C++17"
-    staticruntime "On"
+    staticruntime "Off"
 
     targetdir ("../Build/bin/" .. outputdir .. "/%{prj.name}")
     objdir    ("../Build/obj/" .. outputdir .. "/%{prj.name}")
@@ -35,29 +35,33 @@ project "Engine"
     {
         "spdlog",
         "glfw",
-        "bgfx"
+        "bgfx",
+        "opengl32.lib",
+        "dwmapi.lib"
     }
-    
-	-- Actions
-    filter "action:vs*"
-		defines "_CRT_SECURE_NO_WARNINGS"
 
     -- Configurations
     filter "configurations:Debug"
+        runtime "Debug"
+        optimize "On"
+        symbols "On"
         defines
         {
             "TBX_DEBUG",
-            "TBX_ASSERTS_ENABLED",
-            "BX_CONFIG_DEBUG"
+            "TBX_ASSERTS_ENABLED"
         }
 
     filter "configurations:Release"
+        runtime "Release"
+        optimize "On"
+        symbols "On"
         defines
         {
             "TBX_RELEASE"
         }
     
     filter "configurations:Dist"
+        runtime "Release"
         optimize "On"
         symbols "Off"
         defines 
@@ -74,12 +78,14 @@ project "Engine"
         }
 
     filter "system:linux"
+        systemversion "latest"
         defines
         {
             "TBX_PLATFORM_LINUX"
         }
 
     filter "system:macosx"
+        systemversion "latest"
         defines
         {
             "TBX_PLATFORM_OSX"

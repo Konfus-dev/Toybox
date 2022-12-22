@@ -35,7 +35,7 @@ namespace Toybox::Events
         KeyHeldEvent(int keyCode, float timeHeld) :
             KeyEvent(keyCode), _timeHeld(timeHeld) {}
     private:
-        int _timeHeld;
+        float _timeHeld;
     };
 
     class TOYBOX_API KeyRepeatedEvent : public KeyEvent
