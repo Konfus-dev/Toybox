@@ -9,6 +9,8 @@ IncludeDir["bx"] = "%{wks.location}/3rd Party/bx/include"
 IncludeDir["Engine"] = "%{wks.location}/Engine"
 
 solution "Toybox"
+    startproject "Sandbox"
+
 	if os.is64bit() and not os.istarget("windows") then
 		platforms "x86_64"
 	else
@@ -48,6 +50,15 @@ solution "Toybox"
 			["MACOSX_DEPLOYMENT_TARGET"] = "10.9",
 			["ALWAYS_SEARCH_USER_PATHS"] = "YES" -- This is the minimum version of macos we'll be able to run on
 		}
+	
+	-- Project Groups
+	group "Dependencies"
+		include "3rd Party/bgfx"
+		include "3rd Party/glfw"
+		include "3rd Party/spdlog"
 
-include "Engine"
-include "Sandbox"
+	group "Core"
+		include "Engine"
+
+	group "Testing"
+		include "Sandbox"

@@ -1,4 +1,5 @@
 #include <Toybox.h>
+#include <gl/GL.h>
 
 class SandboxApp : public Toybox::Application
 {

@@ -2,7 +2,7 @@ project "Sandbox"
     kind "ConsoleApp"
     language "C++"
     cppdialect "C++17"
-    staticruntime "Off"
+    staticruntime "On"
 
     targetdir ("../Build/bin/" .. outputdir .. "/%{prj.name}")
     objdir    ("../Build/obj/" .. outputdir .. "/%{prj.name}")
@@ -31,6 +31,11 @@ project "Sandbox"
     -- Platforms
     filter "system:windows"
         systemversion "latest"
+		files
+		{
+			"src/win32_*.*",
+			"src/wgl_context.*"
+		}
         includedirs 
         { 
             "%{IncludeDir.bgfx}/compat/mingw"
@@ -43,7 +48,8 @@ project "Sandbox"
         }
         defines
         {
-            "TBX_PLATFORM_WINDOWS"
+            "TBX_PLATFORM_WINDOWS",
+            "_GLFW_WIN32"
         }
 
     filter "system:linux"
