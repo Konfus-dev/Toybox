@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include "ToyboxAPI.h"
-#include "Modules/Platforms/IWindow.h"
+#include "Modules/RenderSurfaces/IWindow.h"
 
 namespace Toybox
 {

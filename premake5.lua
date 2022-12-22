@@ -6,6 +6,7 @@ IncludeDir["glfw"] = "%{wks.location}/3rd Party/glfw/include"
 IncludeDir["bgfx"] = "%{wks.location}/3rd Party/bgfx/include"
 IncludeDir["bimg"] = "%{wks.location}/3rd Party/bimg/include"
 IncludeDir["bx"] = "%{wks.location}/3rd Party/bx/include"
+IncludeDir["Engine"] = "%{wks.location}/Engine"
 
 solution "Toybox"
 	if os.is64bit() and not os.istarget("windows") then
@@ -13,7 +14,8 @@ solution "Toybox"
 	else
 		platforms { "x86", "x86_64" }
 	end
-
+    
+    -- Configurations
 	configurations 
 	{ 
 		"Dist",
@@ -32,11 +34,8 @@ solution "Toybox"
 	filter "configurations:Debug"
 		optimize "Debug"
 		symbols "On"
-		defines
-		{
-			"BX_CONFIG_DEBUG"
-		}
-
+        
+    -- Platforms
 	filter "platforms:x86"
 		architecture "x86"
 
@@ -50,13 +49,5 @@ solution "Toybox"
 			["ALWAYS_SEARCH_USER_PATHS"] = "YES" -- This is the minimum version of macos we'll be able to run on
 		}
 
-	group "Dependencies"
-		include "3rd Party/bgfx"
-		include "3rd Party/glfw"
-		include "3rd Party/spdlog"
-
-	group "Core"
-		include "Engine"
-
-	group "Testing"
-		include "Sandbox"
+include "Engine"
+include "Sandbox"

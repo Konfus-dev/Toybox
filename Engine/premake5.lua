@@ -2,13 +2,13 @@ project "Engine"
     kind "StaticLib"
     language "C++"
     cppdialect "C++17"
-    staticruntime "off"
+    staticruntime "Off"
 
-    targetdir ("Build/bin/" .. outputdir .. "/%{prj.name}")
-    objdir    ("Build/obj/" .. outputdir .. "/%{prj.name}")
+    targetdir ("../Build/bin/" .. outputdir .. "/%{prj.name}")
+    objdir    ("../Build/obj/" .. outputdir .. "/%{prj.name}")
 
     pchheader "tbxpch.h"
-    pchsource "Engine/tbxpch.cpp"
+    pchsource "tbxpch.cpp"
 
     defines
     {
@@ -25,23 +25,46 @@ project "Engine"
 
     includedirs
     {
-        "Engine",
+        "./",
         "%{IncludeDir.spdlog}",
         "%{IncludeDir.glfw}",
-        "%{IncludeDir.bgfx}",
+        "%{IncludeDir.bgfx}"
     }
 
-    links
-    {
-        "spdlog",
-        "bgfx", 
-        "glfw",
-        "opengl32.lib"
-    }
+	filter "action:vs*"
+		defines "_CRT_SECURE_NO_WARNINGS"
+
+    -- Configurations
+    filter "configurations:Debug"
+        defines
+        {
+            "TBX_DEBUG",
+            "TBX_ASSERTS_ENABLED",
+            "BX_CONFIG_DEBUG"
+        }
+
+    filter "configurations:Release"
+        defines
+        {
+            "TBX_RELEASE"
+        }
+    
+    filter "configurations:Dist"
+        optimize "On"
+        symbols "Off"
+        defines 
+        {
+            "TBX_DIST"
+        }
 
     -- Platforms
     filter "system:windows"
         systemversion "latest"
+		files
+		{
+			"src/win32_*.*",
+			"src/wgl_context.*"
+		}
         includedirs 
         { 
             "%{IncludeDir.bgfx}/compat/mingw"
@@ -50,28 +73,55 @@ project "Engine"
         { 
             "gdi32", 
             "kernel32", 
-            "psapi" 
+            "psapi"
         }
         defines
         {
-            "TBX_PLATFORM_WINDOWS"
+            "TBX_PLATFORM_WINDOWS",
+            "_GLFW_WIN32"
         }
 
     filter "system:linux"
-		links 
+		files
+		{
+			"src/glx_context.*",
+			"src/linux*.*",
+			"src/posix*.*",
+			"src/x11*.*",
+			"src/xkb*.*"
+		}
+        links 
         { 
             "dl", 
             "GL", 
             "pthread", 
             "X11" 
         }
+        defines
+        {
+            "_GLFW_X11"
+        }
 
     filter "system:macosx"
-		includedirs 
+		files
+		{
+			"src/cocoa_*.*",
+			"src/posix_thread.h",
+			"src/nsgl_context.h",
+			"src/egl_context.h",
+			"src/osmesa_context.h",
+
+			"src/posix_thread.c",
+			"src/nsgl_context.m",
+			"src/egl_context.c",
+			"src/nsgl_context.m",
+			"src/osmesa_context.c"                      
+		}
+        includedirs 
         { 
             "%{IncludeDir.bgfx}/compat/osx"
         }
-		links 
+        links 
         { 
             "QuartzCore.framework", 
             "Metal.framework", 
@@ -79,28 +129,7 @@ project "Engine"
             "IOKit.framework",
             "CoreVideo.framework" 
         }
-
-    -- Configurations
-	filter "action:vs*"
-		includedirs 
-        { 
-            "%{IncludeDir.bgfx}/compat/msvc"
-        }
-
-    filter "configurations:Debug"
-		runtime "Debug"
-        symbols "On"
         defines
         {
-            "TBX_DEBUG",
-            "TBX_ASSERTS_ENABLED",
-			"BX_CONFIG_DEBUG"
+            "_GLFW_COCOA"
         }
-
-    filter "configurations:Release"
-		runtime "Release"
-        optimize "On"
-        defines
-		{
-            "TBX_RELEASE"
-		}
