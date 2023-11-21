@@ -1,4 +1,4 @@
-project "Sandbox"
+project "Editor"
     kind "ConsoleApp"
     language "C++"
     cppdialect "C++20"
@@ -17,8 +17,6 @@ project "Sandbox"
 
     includedirs
     {
-        "%{IncludeDir.spdlog}",
-        "%{IncludeDir.glfw}",
         "%{IncludeDir.Engine}"
     }
 
@@ -29,27 +27,14 @@ project "Sandbox"
 
     -- Platforms
     filter "system:Windows"
-        systemversion "latest"
-
-        defines
-        {
-            "TBX_PLATFORM_WINDOWS"
-        }
+        systemversion "Latest"
     
     -- Configurations
     filter "configurations:Debug"
-        defines "TBX_DEBUG"
         symbols "On"
 
-        defines
-        {
-            "TBX_ASSERTS_ENABLED"
-        }
-
     filter "configurations:Release"
-        defines "TBX_RELEASE"
         optimize "On"
 
     filter "configurations:Release"
-        defines "TBX_DIST"
         optimize "On"

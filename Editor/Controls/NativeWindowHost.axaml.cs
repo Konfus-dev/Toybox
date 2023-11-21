@@ -3,25 +3,25 @@ using Avalonia.Controls;
 using Avalonia.Platform;
 namespace Toybox_Editor.Controls;
 
-public partial class HostedControl : UserControl
+public partial class NativeWindowHost : UserControl
 {
-    public HostedControl()
+    public NativeWindowHost()
     {
         DataContext = this;
         InitializeComponent();
     }
 }
 
-public class HostedNativeControl : NativeControlHost
+public class NativeHostControl : NativeControlHost
 {
     private IntPtr? _handle;
 
-    public HostedNativeControl(IntPtr? handle = null)
+    public NativeHostControl(IntPtr? handle = null)
     {
         _handle = handle;
     }
 
-    public HostedNativeControl()
+    public NativeHostControl()
     {
         _handle = null;
     }
@@ -44,7 +44,7 @@ public class HostedNativeControl : NativeControlHost
 
     protected override void DestroyNativeControlCore(IPlatformHandle control)
     {
-        //_handle = null;
+        _handle = null;
         base.DestroyNativeControlCore(control);
     }
 }

@@ -5,6 +5,10 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Toybox_Editor.Views.GameOverlay">
     <Grid>
-        
+        <StackPanel Orientation="Vertical">
+            <Button Content="TEST"></Button>
+            <Button Content="TEST"></Button>
+            <Button Content="TEST"></Button>
+        </StackPanel>
     </Grid>
 </UserControl>

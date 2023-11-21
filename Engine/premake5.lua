@@ -1,7 +1,7 @@
 project "Engine"
     kind "StaticLib"
     language "C++"
-    cppdialect "C++17"
+    cppdialect "C++20"
     staticruntime "Off"
 
     targetdir ("../Build/bin/" .. outputdir .. "/%{prj.name}")
@@ -27,15 +27,13 @@ project "Engine"
     {
         "./",
         "%{IncludeDir.spdlog}",
-        "%{IncludeDir.glfw}",
-        "%{IncludeDir.bgfx}"
+        "%{IncludeDir.glfw}"
     }
 
     links
     {
         "spdlog",
         "glfw",
-        "bgfx",
         "opengl32.lib",
         "dwmapi.lib"
     }
@@ -70,21 +68,21 @@ project "Engine"
         }
 
     -- Platforms
-    filter "system:windows"
+    filter "system:Windows"
         systemversion "latest"
         defines
         {
             "TBX_PLATFORM_WINDOWS"
         }
 
-    filter "system:linux"
+    filter "system:Linux"
         systemversion "latest"
         defines
         {
             "TBX_PLATFORM_LINUX"
         }
 
-    filter "system:macosx"
+    filter "system:Macosx"
         systemversion "latest"
         defines
         {

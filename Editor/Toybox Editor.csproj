@@ -15,7 +15,6 @@
       <OutputPath>..\Build\Editor\bin\Release\</OutputPath>
     </PropertyGroup>
     <ItemGroup>
-        <Folder Include="Models\" />
         <AvaloniaResource Include="Assets\**" />
         <None Remove=".gitignore" />
     </ItemGroup>

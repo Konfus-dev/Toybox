@@ -4,8 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:custom="clr-namespace:Toybox_Editor.Controls"
-             x:Class="Toybox_Editor.Controls.HostedControl">
-    <Grid>
-        <custom:HostedNativeControl/>
+             x:Class="Toybox_Editor.Controls.NativeWindowHost">
+    <Grid Background="Black">
+        <custom:NativeHostControl Name="NativeWindowHostControl"/>
     </Grid>
 </UserControl>

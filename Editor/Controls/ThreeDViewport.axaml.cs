@@ -1,9 +1,9 @@
 ﻿using Avalonia.Controls;
 namespace Toybox_Editor.Controls;
 
-public partial class GameView : UserControl
+public partial class ThreeDViewport : UserControl
 {
-    public GameView()
+    public ThreeDViewport()
     {
         DataContext = this;
         InitializeComponent();
