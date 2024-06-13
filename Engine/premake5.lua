@@ -40,10 +40,7 @@ project "Engine"
 
     -- Disable warnings on all 3rd party stuff
     filter "files:../3rd Party/*"
-        disablewarnings 
-        { 
-            "warning C4996" 
-        }
+        disablewarnings { "warning" }
 
     -- Configurations
     filter "configurations:Debug"
@@ -56,13 +53,13 @@ project "Engine"
             "TBX_ASSERTS_ENABLED"
         }
 
-    filter "configurations:Release"
+    filter "configurations:Optimized"
         runtime "Release"
         optimize "On"
         symbols "On"
         defines
         {
-            "TBX_RELEASE"
+            "TBX_OPTIMIZED"
         }
     
     filter "configurations:Dist"
@@ -71,7 +68,7 @@ project "Engine"
         symbols "Off"
         defines 
         {
-            "TBX_DIST"
+            "TBX_RELEASE"
         }
 
     -- Platforms

@@ -1,20 +1,18 @@
-project "Sandbox"
-    kind "WindowedApp"
+project "EditorCore"
+    kind "StaticLib"
     language "C++"
     cppdialect "C++20"
     staticruntime "Off"
-
-    entrypoint "mainCRTStartup"
     
-    targetdir ("../Build/bin/" .. outputdir .. "/%{prj.name}/")
-    objdir    ("../Build/obj/" .. outputdir .. "/%{prj.name}/")
+    targetdir ("../../Build/bin/" .. outputdir .. "/%{prj.name}/")
+    objdir    ("../../Build/obj/" .. outputdir .. "/%{prj.name}/")
 
     files
     {
         "./**.h",
         "./**.c",
         "./**.hpp",
-        "./**.cpp"
+        "./**.cpp",
     }
 
     includedirs
@@ -22,15 +20,15 @@ project "Sandbox"
         "%{IncludeDir.Engine}"
     }
 
-    links
-    {
-        "Engine"
-    }
-
     -- Platforms
     filter "system:Windows"
         systemversion "latest"
-        defines "TBX_PLATFORM_WINDOWS"
+        defines
+        { 
+            "TOYBOX",
+            "TOYBOX_EXPORT_DLL", 
+            "TBX_PLATFORM_WINDOWS" 
+        }
     
     -- Configurations
     filter "configurations:Debug"

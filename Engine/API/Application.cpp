@@ -4,6 +4,10 @@
 
 namespace Toybox
 {
+    bool _isOpen;
+    std::string _name;
+    Modules::IWindow* _mainWindow;
+
     Application::Application(const std::string name)
     {
         _name = name;
@@ -36,10 +40,5 @@ namespace Toybox
     int Application::GetHandle()
     {
         return _mainWindow->GetHandle();
-    }
-
-    std::string Application::GetName()
-    {
-        return _name;
     }
 }

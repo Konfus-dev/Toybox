@@ -12,24 +12,22 @@ workspace "Toybox"
 	configurations
 	{
 		"Debug",
-		"Release",
-		"Dist"
+		"Optimized",
+		"Release"
 	}
 	
-	group "Dependencies"
+	group "_Dependencies"
 		include "3rd Party/glfw"
 		include "3rd Party/spdlog"
-		
-	group "Editor"
-		include "Editor"
 	
 	group "Engine"
-		group "Core"
-			include "Engine"
-		group "Modules"
-			group "Logging"
-			group "Rendering"
-			group "Windows"
+		include "Engine"
+		
+	group "Editor"
+		group "Editor Core"
+			include "Editor/Core"
+		group "Editor Sharp"
+			--includeexternal "Editor/EditorSharp"
 
 	group "Testing"
 		include "Sandbox"

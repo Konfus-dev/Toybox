@@ -1,8 +1,7 @@
-﻿<Project>
-    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-        <MSBUildProjectExtensionsPath>..\Build\Editor\obj\Debug\</MSBUildProjectExtensionsPath>
-    </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-        <MSBUildProjectExtensionsPath>..\Build\Editor\obj\Release\</MSBUildProjectExtensionsPath>
+<Project>
+    <PropertyGroup>
+		<OutputPath>..\Build\bin\</OutputPath>
+        <IntermediateOutputPath>..\Build\obj\</IntermediateOutputPath>
+        <MSBUildProjectExtensionsPath>..\Build\obj\</MSBUildProjectExtensionsPath>
     </PropertyGroup>
 </Project>

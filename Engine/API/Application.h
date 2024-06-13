@@ -13,17 +13,11 @@ namespace Toybox
         void Launch();
         void Close();
         int GetHandle();
-        std::string GetName();
 
     protected:
         virtual void OnOpen() = 0;
         virtual void Update() = 0;
-        virtual void OnClose() = 0; 
-
-    private:
-        bool _isOpen;
-        std::string _name;
-        Modules::IWindow* _mainWindow;
+        virtual void OnClose() = 0;
     };
 
     // API to create app, meant to be defined in CLIENT!
