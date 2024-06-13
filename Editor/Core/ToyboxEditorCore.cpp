@@ -1,4 +1,5 @@
 #include <Toybox.h>
+#include "ToyboxEditorAPI.h"
 
 namespace Editor
 {
@@ -36,9 +37,8 @@ namespace Editor
     };
 }
 
-extern "C" __declspec(dllexport) int LaunchEditorCore()
+TBX_EDITOR_API int LaunchViewport()
 {
-    TBX_INFO("Loading Engine!");
     Toybox::Application* editorCore = Toybox::CreateApp();
     return editorCore->GetHandle();
 }

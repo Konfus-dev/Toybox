@@ -4,6 +4,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using EditorSharp.ViewModels;
 using EditorSharp.Views;
+using EditorSharp.Views.Controls;
 using EditorSharp.Views.Windows;
 
 namespace EditorSharp;
@@ -19,16 +20,14 @@ public partial class App : Application
     {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            var coreHandle = LaunchEditorCore();
-            desktop.MainWindow = new MainWindow
+            var mainWindow = new MainWindow
             {
                 DataContext = new MainWindowVM(),
             };
+            desktop.MainWindow = mainWindow;
         }
 
         base.OnFrameworkInitializationCompleted();
     }
 
-    [DllImport("EditorCore.dll")]
-    public static extern int LaunchEditorCore();
 }
