@@ -3,9 +3,9 @@ project "Engine"
     language "C++"
     cppdialect "C++20"
     staticruntime "Off"
-
-    targetdir ("../Build/bin/" .. outputdir .. "/%{prj.name}")
-    objdir    ("../Build/obj/" .. outputdir .. "/%{prj.name}")
+    
+    targetdir ("../Build/bin/" .. outputdir .. "/%{prj.name}/")
+    objdir    ("../Build/obj/" .. outputdir .. "/%{prj.name}/")
 
     pchheader "tbxpch.h"
     pchsource "tbxpch.cpp"
@@ -37,6 +37,13 @@ project "Engine"
         "opengl32.lib",
         "dwmapi.lib"
     }
+
+    -- Disable warnings on all 3rd party stuff
+    filter "files:../3rd Party/*"
+        disablewarnings 
+        { 
+            "warning C4996" 
+        }
 
     -- Configurations
     filter "configurations:Debug"
@@ -72,19 +79,22 @@ project "Engine"
         systemversion "latest"
         defines
         {
-            "TBX_PLATFORM_WINDOWS"
+            "TBX_PLATFORM_WINDOWS",
+            "GLFW_EXPOSE_NATIVE_WIN32"
         }
 
     filter "system:Linux"
         systemversion "latest"
         defines
         {
-            "TBX_PLATFORM_LINUX"
+            "TBX_PLATFORM_LINUX",
+            "GLFW_EXPOSE_NATIVE_WAYLAND"
         }
 
     filter "system:Macosx"
         systemversion "latest"
         defines
         {
-            "TBX_PLATFORM_OSX"
+            "TBX_PLATFORM_OSX",
+            "GLFW_EXPOSE_NATIVE_COCOA"
         }

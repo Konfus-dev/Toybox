@@ -2,8 +2,11 @@
 #include "GlfwWindow.h"
 #include "Debug/Logging/Logging.h"
 #include "Debug/Assert.h"
+#include <GLFW/glfw3.h>
+#include <GLFW/glfw3native.h>
 
 static bool s_glfwInitialized = false;
+GLFWwindow* _glfwWindow;
 
 Toybox::Modules::GlfwWindow::GlfwWindow(const std::string title, Math::Size* size)
 {
@@ -11,7 +14,7 @@ Toybox::Modules::GlfwWindow::GlfwWindow(const std::string title, Math::Size* siz
     _size = size;
     _vSyncEnabled = true;
 
-    TBX_INFO(fmt::format("Creating a new glfw window: {} of size: {}, {}", title, size->Width, size->Height));
+    TBX_INFO(std::format("Creating a new glfw window: {} of size: {}, {}", title, size->Width, size->Height));
 
     if (!s_glfwInitialized)
     {
@@ -48,6 +51,11 @@ void Toybox::Modules::GlfwWindow::SetVSyncEnabled(const bool enabled)
 bool Toybox::Modules::GlfwWindow::GetVSyncEnabled() const
 {
     return _vSyncEnabled;
+}
+
+int Toybox::Modules::GlfwWindow::GetHandle() const
+{
+    return (int)glfwGetWin32Window(_glfwWindow);
 }
 
 Toybox::Math::Size* Toybox::Modules::GlfwWindow::GetSize() const

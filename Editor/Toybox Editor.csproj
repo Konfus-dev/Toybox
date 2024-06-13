@@ -1,4 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+    <!--Manifest-->
+    <PropertyGroup>
+        <!-- For Microsoft.CodeAnalysis -->
+        <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+    </PropertyGroup>
+    <!--Output-->
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
         <TargetFramework>net6.0</TargetFramework>
@@ -8,16 +15,22 @@
         <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
+    <PropertyGroup>
+    </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-      <OutputPath>..\Build\Editor\bin\Debug\</OutputPath>
+        <OutputPath>..\Build\Editor\bin\Debug\</OutputPath>
+        <MSBUildProjectExtensionsPath>..\Build\Editor\obj\Debug\</MSBUildProjectExtensionsPath>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-      <OutputPath>..\Build\Editor\bin\Release\</OutputPath>
+        <OutputPath>..\Build\Editor\bin\Release\</OutputPath>
+        <MSBUildProjectExtensionsPath>..\Build\Editor\obj\Release\</MSBUildProjectExtensionsPath>
     </PropertyGroup>
+    <!--Assets-->
     <ItemGroup>
         <AvaloniaResource Include="Assets\**" />
         <None Remove=".gitignore" />
     </ItemGroup>
+    <!--Assemblies-->
     <ItemGroup>
         <!--This helps with theme dll-s trimming.
         If you will publish your application in self-contained mode with p:PublishTrimmed=true and it will use Fluent theme Default theme will be trimmed from the output and vice versa.
@@ -25,6 +38,13 @@
         <TrimmableAssembly Include="Avalonia.Themes.Fluent" />
         <TrimmableAssembly Include="Avalonia.Themes.Default" />
     </ItemGroup>
+    <!--Dlls-->
+    <ItemGroup>
+        <Reference Include="EditorCore">
+            <HintPath>Editor.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+    <!--Packages-->
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="0.10.18" />
         <PackageReference Include="Avalonia.Desktop" Version="0.10.18" />

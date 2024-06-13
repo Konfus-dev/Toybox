@@ -8,13 +8,13 @@ namespace Toybox
     {
         _name = name;
         _isOpen = false;
-        _window = Modules::WindowFactory::Create("Toybox Engine", new Math::Size(1920, 1080));
+        _mainWindow = Modules::WindowFactory::Create(name, new Math::Size(1920, 1080));
     }
 
     Application::~Application()
     {
         if (_isOpen) Close();
-        delete _window;
+        delete _mainWindow;
     }
     
     void Application::Launch()
@@ -24,13 +24,18 @@ namespace Toybox
         while (_isOpen) 
         {
             Update();
-            _window->Update();
+            _mainWindow->Update();
         }
     }
 
     void Application::Close()
     {
         _isOpen = false;
+    }
+
+    int Application::GetHandle()
+    {
+        return _mainWindow->GetHandle();
     }
 
     std::string Application::GetName()

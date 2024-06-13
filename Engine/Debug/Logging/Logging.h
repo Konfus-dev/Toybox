@@ -1,7 +1,7 @@
 #pragma once
 #include "Log.h"
 #include "LogLevel.h"
-#include <spdlog/fmt/bundled/format.h>
+#include <format>
 
 #define TBX_TRACE(msg)         ::Toybox::Debug::Log::Trace(msg)
 #define TBX_INFO(msg)          ::Toybox::Debug::Log::Info(msg)

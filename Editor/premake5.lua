@@ -1,18 +1,20 @@
 project "Editor"
-    kind "ConsoleApp"
-    language "C++"
-    cppdialect "C++20"
+    language "C#"
+    kind "WindowedApp"
     staticruntime "Off"
-
-    targetdir ("../Build/bin/" .. outputdir .. "/%{prj.name}")
-    objdir    ("../Build/obj/" .. outputdir .. "/%{prj.name}")
+    csversion("12")
+    
+    targetdir ("../Build/bin/" .. outputdir .. "/%{prj.name}/")
+    objdir    ("../Build/obj/" .. outputdir .. "/%{prj.name}/")
 
     files
     {
-        "./**.h",
-        "./**.c",
-        "./**.hpp",
-        "./**.cpp"
+        "./**.cs",
+        "./**.cpp",
+        "./**.axaml",
+        "./**.ico",
+        "./**.jpg",
+        "./**.png"
     }
 
     includedirs
@@ -22,19 +24,36 @@ project "Editor"
 
     links
     {
-        "Engine"
+        "Engine",
+        "Avalonia"
     }
+        
+    filter "files:**.cpp"
+        buildaction "Compile"
 
     -- Platforms
     filter "system:Windows"
-        systemversion "Latest"
+        systemversion "latest"
+        defines
+        { 
+            "TOYBOX",
+            "TOYBOX_EXPORT_DLL", 
+            "TBX_PLATFORM_WINDOWS"
+        }
     
     -- Configurations
     filter "configurations:Debug"
         symbols "On"
+        defines
+        {
+            "TBX_DEBUG",
+            "TBX_ASSERTS_ENABLED"
+        }
 
     filter "configurations:Release"
         optimize "On"
+        defines "TBX_RELEASE"
 
     filter "configurations:Release"
         optimize "On"
+        defines "TBX_DIST"

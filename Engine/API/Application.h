@@ -12,6 +12,7 @@ namespace Toybox
         virtual ~Application();
         void Launch();
         void Close();
+        int GetHandle();
         std::string GetName();
 
     protected:
@@ -22,7 +23,7 @@ namespace Toybox
     private:
         bool _isOpen;
         std::string _name;
-        Modules::IWindow* _window;
+        Modules::IWindow* _mainWindow;
     };
 
     // API to create app, meant to be defined in CLIENT!

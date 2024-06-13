@@ -1,9 +1,12 @@
 #include "tbxpch.h"
 #include "SpdLogger.h"
+#include <spdlog/spdlog.h>
 #include "spdlog/sinks/stdout_color_sinks.h"
 
 namespace Toybox::Modules
 {
+    std::shared_ptr<spdlog::logger> _spdLogger;
+
     SpdLogger::SpdLogger()
     {
         _spdLogger = spdlog::stdout_color_mt("LOGGER");

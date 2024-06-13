@@ -19,15 +19,15 @@ public class EditorApp : Application
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             var mainWindow = new MainWindow();
-            mainWindow.ThreeDViewport.NativeWindowHost.NativeWindowHostControl = new NativeHostControl(LoadEngine());
+            var handle = LaunchEditorCore();
+            mainWindow.ThreeDViewport.NativeWindowHost.NativeWindowHostControl = new NativeHostControl((IntPtr)handle);
             desktop.MainWindow = new MainWindow();
-            
         }
 
         base.OnFrameworkInitializationCompleted();
     }
     
     // Loads engine and returns the 3d viewport window handle
-    [DllImport("Engine.lib")]
-    private static extern IntPtr LoadEngine();
+    [DllImport("Editor.dll")]
+    private static extern int LaunchEditorCore();
 }

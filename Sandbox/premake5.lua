@@ -1,11 +1,13 @@
 project "Sandbox"
-    kind "ConsoleApp"
+    kind "WindowedApp"
     language "C++"
     cppdialect "C++20"
     staticruntime "Off"
 
-    targetdir ("../Build/bin/" .. outputdir .. "/%{prj.name}")
-    objdir    ("../Build/obj/" .. outputdir .. "/%{prj.name}")
+    entrypoint "mainCRTStartup"
+    
+    targetdir ("../Build/bin/" .. outputdir .. "/%{prj.name}/")
+    objdir    ("../Build/obj/" .. outputdir .. "/%{prj.name}/")
 
     files
     {
@@ -17,8 +19,6 @@ project "Sandbox"
 
     includedirs
     {
-        "%{IncludeDir.spdlog}",
-        "%{IncludeDir.glfw}",
         "%{IncludeDir.Engine}"
     }
 
@@ -30,26 +30,21 @@ project "Sandbox"
     -- Platforms
     filter "system:Windows"
         systemversion "latest"
-
-        defines
-        {
-            "TBX_PLATFORM_WINDOWS"
-        }
+        defines "TBX_PLATFORM_WINDOWS"
     
     -- Configurations
     filter "configurations:Debug"
-        defines "TBX_DEBUG"
         symbols "On"
-
         defines
         {
+            "TBX_DEBUG",
             "TBX_ASSERTS_ENABLED"
         }
 
     filter "configurations:Release"
-        defines "TBX_RELEASE"
         optimize "On"
+        defines "TBX_RELEASE"
 
     filter "configurations:Release"
-        defines "TBX_DIST"
         optimize "On"
+        defines "TBX_DIST"

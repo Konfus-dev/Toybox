@@ -15,6 +15,7 @@ namespace Toybox::Modules
         
         virtual void SetVSyncEnabled(bool enabled) = 0;
         virtual bool GetVSyncEnabled() const = 0;
+        virtual int GetHandle() const = 0;
         virtual Math::Size* GetSize() const = 0;
         virtual std::string GetTitle() const = 0;
     };

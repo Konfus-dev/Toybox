@@ -15,7 +15,7 @@ protected:
     void Update() override
     {
         TBX_INFO("Update called!");
-        TBX_WARN(fmt::format("Frame: {}", _frameCount++));
+        TBX_WARN(std::format("Frame: {}", _frameCount++));
     }
 
     void OnClose() override
