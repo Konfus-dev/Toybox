@@ -23,10 +23,15 @@ Toybox::Modules::GlfwWindow::GlfwWindow(const std::string title, Math::Size* siz
         TBX_ASSERT(success, "Failed to initialize glfw!");
     }
 
+    // TODO: Add a way to change window type:
+    /* Windowed mode (monitor = nullptr)
+     * Fullscreen mode (monitor != nullptr)
+     * Windowed borderless (monitor = nullptr, decorated = false)
+     * Fullscreen borderless (monitor != nullptr, video mode = monitor mode) */
+    glfwWindowHint(GLFW_DECORATED, false);
     _glfwWindow = glfwCreateWindow(_size->Width, _size->Height, _title.c_str(), nullptr, nullptr);
     glfwMakeContextCurrent(_glfwWindow);
     glfwSetWindowUserPointer(_glfwWindow, this);
-
     SetVSyncEnabled(_vSyncEnabled);
 }
 

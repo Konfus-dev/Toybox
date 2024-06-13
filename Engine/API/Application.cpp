@@ -1,6 +1,6 @@
 #include "tbxpch.h"
 #include "Application.h"
-#include "Modules/RenderSurfaces/WindowFactory.h"
+#include "Modules/Windows/WindowFactory.h"
 
 namespace Toybox
 {
