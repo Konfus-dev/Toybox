@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
@@ -18,6 +19,7 @@ public partial class App : Application
     {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
+            var coreHandle = LaunchEditorCore();
             desktop.MainWindow = new MainWindow
             {
                 DataContext = new MainWindowVM(),
@@ -26,4 +28,7 @@ public partial class App : Application
 
         base.OnFrameworkInitializationCompleted();
     }
+
+    [DllImport("EditorCore.dll")]
+    public static extern int LaunchEditorCore();
 }

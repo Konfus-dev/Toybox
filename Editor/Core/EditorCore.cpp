@@ -34,13 +34,13 @@ namespace Editor
     private:
         int _frameCount = 0;
     };
+}
 
-    TOYBOX_API int LaunchEditorCore()
-    {
-        TBX_INFO("Loading Engine!");
-        Toybox::Application* editorCore = Toybox::CreateApp();
-        return editorCore->GetHandle();
-    }
+extern "C" __declspec(dllexport) int LaunchEditorCore()
+{
+    TBX_INFO("Loading Engine!");
+    Toybox::Application* editorCore = Toybox::CreateApp();
+    return editorCore->GetHandle();
 }
 
 Toybox::Application* Toybox::CreateApp()

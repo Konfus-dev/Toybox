@@ -1,5 +1,5 @@
 project "EditorCore"
-    kind "StaticLib"
+    kind "SharedLib"
     language "C++"
     cppdialect "C++20"
     staticruntime "Off"
@@ -20,13 +20,18 @@ project "EditorCore"
         "%{IncludeDir.Engine}"
     }
 
+    links
+    {
+        "Engine"
+    }
+
     -- Platforms
     filter "system:Windows"
         systemversion "latest"
         defines
         { 
             "TOYBOX",
-            "TOYBOX_EXPORT_DLL", 
+            "TOYBOX_EXPORT_DLL",
             "TBX_PLATFORM_WINDOWS" 
         }
     
