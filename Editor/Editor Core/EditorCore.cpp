@@ -1,5 +1,5 @@
 #include <Toybox.h>
-#include "ToyboxEditorAPI.h"
+#include "EditorCoreAPI.h"
 
 namespace Editor
 {
@@ -9,22 +9,17 @@ namespace Editor
         EditorCore() : Application("Toybox") { }
         ~EditorCore() override = default;
 
-        int Start()
-        {
-            TBX_INFO("Loading Engine!");
-            return GetHandle();
-        }
-
     protected:
         void OnOpen() override
         {
             TBX_TRACE("OnOpen called!");
         }
 
-        void Update() override
+        void OnUpdate() override
         {
             TBX_INFO("Update called!");
             TBX_WARN(std::format("Frame: {}", _frameCount++));
+            GetMainWindow()->Update();
         }
 
         void OnClose() override
@@ -35,15 +30,26 @@ namespace Editor
     private:
         int _frameCount = 0;
     };
-}
+    
+    Toybox::Application* CoreApp;
+    
+    TBX_EDITOR_CORE_API int LaunchViewport()
+    {
+        TBX_INFO("Launching Editor!");
+        CoreApp = Toybox::CreateApp();
+        CoreApp->Launch();
+        return CoreApp->GetHandle();
+    }
 
-TBX_EDITOR_API int LaunchViewport()
-{
-    Toybox::Application* editorCore = Toybox::CreateApp();
-    return editorCore->GetHandle();
+    TBX_EDITOR_CORE_API void UpdateViewport()
+    {
+        TBX_INFO("Updating viewport!");
+        CoreApp->GetMainWindow()->Update();
+    }
 }
 
 Toybox::Application* Toybox::CreateApp()
 {
+    TBX_INFO("Created app!");
     return new Editor::EditorCore();
 }

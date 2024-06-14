@@ -4,9 +4,9 @@ namespace Toybox::Math
 {
     struct Size
     {
-        unsigned int Width, Height;
+        int Width, Height;
 
-        Size(unsigned int width, unsigned int height)
+        Size(int width, int height)
         {
             Width = width;
             Height = height;

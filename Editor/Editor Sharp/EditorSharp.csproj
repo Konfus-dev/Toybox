@@ -1,4 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+    <!--TODO: Move these to .prop files-->
     <!--Build-->
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
@@ -9,6 +10,7 @@
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
         <Configurations>Debug;Optimized;Release</Configurations>
         <Platforms>AnyCPU</Platforms>
+        <Company />
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
       <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -35,6 +37,8 @@
         <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.10"/>
         <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.10"/>
     </ItemGroup>
+    
+    <!--Exclude Core (In seperate VS proj)-->
     <ItemGroup>
       <AvaloniaXaml Remove="Core\**" />
     </ItemGroup>

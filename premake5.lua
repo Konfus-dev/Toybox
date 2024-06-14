@@ -1,5 +1,5 @@
-outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
-
+--outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+outputdir = ""
 IncludeDir = {}
 IncludeDir["spdlog"] = "%{wks.location}/3rd Party/spdlog/include"
 IncludeDir["glfw"] = "%{wks.location}/3rd Party/glfw/include"
@@ -22,12 +22,6 @@ workspace "Toybox"
 	
 	group "Engine"
 		include "Engine"
-		
-	group "Editor"
-		group "Editor Core"
-			include "Editor/Core"
-		group "Editor Sharp"
-			--includeexternal "Editor/EditorSharp"
 
 	group "Testing"
 		include "Sandbox"

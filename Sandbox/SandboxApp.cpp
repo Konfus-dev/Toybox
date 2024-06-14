@@ -12,7 +12,7 @@ protected:
         TBX_TRACE("OnOpen called!");
     }
 
-    void Update() override
+    void OnUpdate() override
     {
         TBX_INFO("Update called!");
         TBX_WARN(std::format("Frame: {}", _frameCount++));

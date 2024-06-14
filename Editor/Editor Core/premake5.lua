@@ -3,6 +3,8 @@ project "EditorCore"
     language "C++"
     cppdialect "C++20"
     staticruntime "Off"
+
+    entrypoint "mainCRTStartup"
     
     targetdir ("../../Build/bin/" .. outputdir .. "/%{prj.name}/")
     objdir    ("../../Build/obj/" .. outputdir .. "/%{prj.name}/")

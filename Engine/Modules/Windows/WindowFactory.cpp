@@ -5,7 +5,7 @@
 
 namespace Toybox::Modules
 {
-    IWindow* WindowFactory::Create(std::string title, Toybox::Math::Size* size)
+    IWindow* WindowFactory::Create(const std::string& title, Toybox::Math::Size* size)
     {
         #ifdef TBX_PLATFORM_WINDOWS
             return new GlfwWindow(title, size);

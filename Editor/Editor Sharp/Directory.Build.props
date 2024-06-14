@@ -1,0 +1,9 @@
+<Project>
+    <PropertyGroup>
+        <!--<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>-->
+		<OutputPath>..\..\Build\bin\</OutputPath>
+        <IntermediateOutputPath>..\..\Build\obj\</IntermediateOutputPath>
+        <MSBUildProjectExtensionsPath>..\..\Build\obj\</MSBUildProjectExtensionsPath>
+    </PropertyGroup>
+</Project>

@@ -6,7 +6,7 @@ namespace Toybox::Modules
     class TOYBOX_API GlfwWindow : public IWindow
     {
     public:
-        GlfwWindow(std::string title, Math::Size* size);
+        GlfwWindow(const std::string& title, Math::Size* size);
         ~GlfwWindow() override;
         void Update() override;
         void SetVSyncEnabled(bool enabled) override;

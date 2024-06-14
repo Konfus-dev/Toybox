@@ -8,6 +8,6 @@ namespace Toybox::Modules
     class TOYBOX_API WindowFactory
     {
     public:
-        static IWindow* Create(std::string title, Toybox::Math::Size* size);
+        static IWindow* Create(const std::string& title, Toybox::Math::Size* size);
     };
 }

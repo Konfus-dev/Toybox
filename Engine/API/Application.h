@@ -8,15 +8,18 @@ namespace Toybox
     class TOYBOX_API Application
     {
     public:
-        Application(std::string name);
+        Application(const std::string& name);
         virtual ~Application();
         void Launch();
+        void Update();
         void Close();
         int GetHandle();
+        bool GetIsRunning();
+        Modules::IWindow* GetMainWindow();
 
     protected:
         virtual void OnOpen() = 0;
-        virtual void Update() = 0;
+        virtual void OnUpdate() = 0;
         virtual void OnClose() = 0;
     };
 
