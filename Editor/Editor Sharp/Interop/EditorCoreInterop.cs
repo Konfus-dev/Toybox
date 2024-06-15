@@ -4,10 +4,9 @@ namespace EditorSharp.Interop;
 
 public class EditorCoreInterop
 {
-    [DllImport("../EditorCore/EditorCore.dll")]
+    [DllImport("../EditorCoreInterop/EditorCoreInterop.dll")]
     public static extern int LaunchViewport();
     
-    
-    [DllImport("../EditorCore/EditorCore.dll")]
-    public static extern int UpdateViewport();
+    [DllImport("../EditorCoreInterop/EditorCoreInterop.dll")]
+    public static extern void UpdateViewport();
 }

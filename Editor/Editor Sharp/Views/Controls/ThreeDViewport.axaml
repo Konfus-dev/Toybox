@@ -6,6 +6,6 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="EditorSharp.Views.Controls.ThreeDViewport">
     <Grid Background="DeepPink">
-        <controls:Native3DViewport Name="NativeWindowHost"/>
+        <controls:Native3DViewport Name="Native3DViewport"/>
     </Grid>
 </UserControl>

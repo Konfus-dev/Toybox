@@ -2,11 +2,10 @@
 #include "Application.h"
 #include "Debug/Logging/Logging.h"
 
-inline int main(int argc, char* argv[])
+int main(int argc, char* argv[])
 {
     TBX_INFO("Creating app...");
     Toybox::Application* app = Toybox::CreateApp();
-
     app->Launch();
     while (app->GetIsRunning())
     {
@@ -16,6 +15,5 @@ inline int main(int argc, char* argv[])
 
     TBX_INFO("Deleting app...");
     delete app;
-
     return 0;
 }

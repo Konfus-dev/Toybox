@@ -1,7 +1,6 @@
 ﻿using Avalonia;
 using Avalonia.ReactiveUI;
 using System;
-
 namespace EditorSharp;
 
 sealed class Program

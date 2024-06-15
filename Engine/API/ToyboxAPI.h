@@ -1,7 +1,7 @@
 #pragma once
 
 #ifdef TBX_PLATFORM_WINDOWS
-    #ifdef TOYBOX_EXPORT_DLL
+    #ifdef TBX_EXPORT_DLL
         #ifdef TOYBOX
             #define TOYBOX_API __declspec(dllexport)
         #else

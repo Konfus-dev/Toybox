@@ -1,4 +1,7 @@
-﻿using Avalonia.Controls;
+﻿using System.Threading.Tasks;
+using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Input;
 using Avalonia.Media;
 using Avalonia.Platform;
 using EditorSharp.Interop;
@@ -15,19 +18,24 @@ public partial class ThreeDViewport : UserControl
 
 public class Native3DViewport : NativeControlHost
 {
+    public Native3DViewport()
+    {
+        DataContext = this;
+    }
+    
     protected override IPlatformHandle CreateNativeControlCore(IPlatformHandle parent)
     {
-        // TODO: this is freezing for some reason... figure out why!
-        // AppendRuntimeIdentifierToOutputPath and AppendTargetFrameworkToOutputPath both changed to false, this the reason? Change back and test!
         var editorCoreHandle = EditorCoreInterop.LaunchViewport();
         var platformHandle = new PlatformHandle(editorCoreHandle, Name);
+        EditorCoreInterop.UpdateViewport();
         return platformHandle;
     }
 
-    public override void Render(DrawingContext context)
+    protected override Size MeasureOverride(Size availableSize)
     {
+        // TODO: need to get the viewport updating in a loop, rn only updates when resized...
         EditorCoreInterop.UpdateViewport();
-        base.Render(context);
+        return base.MeasureOverride(availableSize);
     }
 
     protected override void DestroyNativeControlCore(IPlatformHandle control)

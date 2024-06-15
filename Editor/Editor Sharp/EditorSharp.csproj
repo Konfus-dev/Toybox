@@ -1,5 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <!--TODO: Move these to .prop files-->
     <!--Build-->
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
@@ -9,8 +8,6 @@
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
         <Configurations>Debug;Optimized;Release</Configurations>
-        <Platforms>AnyCPU</Platforms>
-        <Company />
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
       <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -22,23 +19,20 @@
 
     <!--Resources-->
     <ItemGroup>
-        <Folder Include="Models\"/>
-        <AvaloniaResource Include="Assets\**"/>
+        <AvaloniaResource Include="Assets\**" />
         <AvaloniaResource Remove="Core\**" />
     </ItemGroup>
 
     <!--Packages-->
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="11.0.10"/>
-        <PackageReference Include="Avalonia.Desktop" Version="11.0.10"/>
-        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.10"/>
-        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.0.10"/>
+        <PackageReference Include="Avalonia" Version="11.0.10" />
+        <PackageReference Include="Avalonia.Desktop" Version="11.0.10" />
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.10" />
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.0.10" />
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
-        <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.10"/>
-        <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.10"/>
+        <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.10" />
+        <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.10" />
     </ItemGroup>
-    
-    <!--Exclude Core (In seperate VS proj)-->
     <ItemGroup>
       <AvaloniaXaml Remove="Core\**" />
     </ItemGroup>
@@ -53,5 +47,8 @@
     </ItemGroup>
     <ItemGroup>
       <None Remove="Core\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\Editor Core Lib\EditorCoreLib.vcxproj" />
     </ItemGroup>
 </Project>

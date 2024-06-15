@@ -4,8 +4,8 @@ project "Engine"
     cppdialect "C++20"
     staticruntime "Off"
     
-    targetdir ("../Build/bin/" .. outputdir .. "/%{prj.name}/")
-    objdir    ("../Build/obj/" .. outputdir .. "/%{prj.name}/")
+    targetdir ("../" .. OutputDir .. "/bin/%{prj.name}/")
+    objdir    ("../" .. OutputDir .. "/obj/%{prj.name}/")
 
     pchheader "tbxpch.h"
     pchsource "tbxpch.cpp"
@@ -42,56 +42,26 @@ project "Engine"
     filter "files:../3rd Party/*"
         disablewarnings { "warning" }
 
-    -- Configurations
-    filter "configurations:Debug"
-        runtime "Debug"
-        optimize "On"
-        symbols "On"
-        defines
-        {
-            "TBX_DEBUG",
-            "TBX_ASSERTS_ENABLED"
-        }
+    -- Setup standard platforms and configs
+    StandardPlatformsAndConfigs()
 
-    filter "configurations:Optimized"
-        runtime "Release"
-        optimize "On"
-        symbols "On"
-        defines
-        {
-            "TBX_OPTIMIZED"
-        }
-    
-    filter "configurations:Dist"
-        runtime "Release"
-        optimize "On"
-        symbols "Off"
-        defines 
-        {
-            "TBX_RELEASE"
-        }
-
-    -- Platforms
+    -- Expose native platform methods 
+	-- which is needed to grab handles of windows for editor
     filter "system:Windows"
-        systemversion "latest"
         defines
         {
-            "TBX_PLATFORM_WINDOWS",
+			"TBX_EXPORT_DLL",
             "GLFW_EXPOSE_NATIVE_WIN32"
         }
 
     filter "system:Linux"
-        systemversion "latest"
         defines
         {
-            "TBX_PLATFORM_LINUX",
             "GLFW_EXPOSE_NATIVE_WAYLAND"
         }
 
     filter "system:Macosx"
-        systemversion "latest"
         defines
         {
-            "TBX_PLATFORM_OSX",
             "GLFW_EXPOSE_NATIVE_COCOA"
         }

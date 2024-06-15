@@ -1,5 +1,5 @@
+#pragma once
 #include <Toybox.h>
-#include "EditorCoreAPI.h"
 
 namespace Editor
 {
@@ -30,22 +30,6 @@ namespace Editor
     private:
         int _frameCount = 0;
     };
-    
-    Toybox::Application* CoreApp;
-    
-    TBX_EDITOR_CORE_API int LaunchViewport()
-    {
-        TBX_INFO("Launching Editor!");
-        CoreApp = Toybox::CreateApp();
-        CoreApp->Launch();
-        return CoreApp->GetHandle();
-    }
-
-    TBX_EDITOR_CORE_API void UpdateViewport()
-    {
-        TBX_INFO("Updating viewport!");
-        CoreApp->GetMainWindow()->Update();
-    }
 }
 
 Toybox::Application* Toybox::CreateApp()

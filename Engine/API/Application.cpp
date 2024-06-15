@@ -1,8 +1,5 @@
 #include "tbxpch.h"
 #include "Application.h"
-
-#include <thread>
-
 #include "Modules/Windows/WindowFactory.h"
 
 namespace Toybox
@@ -41,14 +38,14 @@ namespace Toybox
         _isRunning = false;
     }
 
-    int Application::GetHandle()
-    {
-        return _mainWindow->GetHandle();
-    }
-
-    bool Application::GetIsRunning()
+    const bool Application::GetIsRunning()
     {
         return _isRunning;
+    }
+
+    const std::string& Application::GetName()
+    {
+        return _name;
     }
 
     Modules::IWindow* Application::GetMainWindow()

@@ -3,7 +3,7 @@
 class SandboxApp : public Toybox::Application
 {
 public:
-    SandboxApp() : Application("APP") { }
+    SandboxApp() : Application("Sandbox") { }
     ~SandboxApp() override = default;
 
 protected:
