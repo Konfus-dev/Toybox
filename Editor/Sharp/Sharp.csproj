@@ -1,0 +1,54 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <!--Build-->
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+        <Configurations>Debug;Optimized;Release</Configurations>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Optimized' ">
+      <Optimize>true</Optimize>
+      <DebugSymbols>true</DebugSymbols>
+    </PropertyGroup>
+
+    <!--Resources-->
+    <ItemGroup>
+        <AvaloniaResource Include="Assets\**" />
+        <AvaloniaResource Remove="Core\**" />
+    </ItemGroup>
+
+    <!--Packages-->
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="11.0.10" />
+        <PackageReference Include="Avalonia.Desktop" Version="11.0.10" />
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.10" />
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.0.10" />
+        <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+        <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.10" />
+        <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.10" />
+    </ItemGroup>
+    <ItemGroup>
+      <AvaloniaXaml Remove="Core\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <Compile Remove="Core\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Remove="Core\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <AdditionalFiles Remove="Core\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Remove="Core\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\Lib\Lib.vcxproj" />
+    </ItemGroup>
+</Project>

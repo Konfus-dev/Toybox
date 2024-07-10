@@ -3,8 +3,8 @@ OutputDir = "Build/"
 IncludeDir = {}
 IncludeDir["spdlog"] = "%{wks.location}/3rd Party/spdlog/include"
 IncludeDir["glfw"] = "%{wks.location}/3rd Party/glfw/include"
-IncludeDir["Engine"] = "%{wks.location}/Engine"
-IncludeDir["EditorCoreLib"] = "%{wks.location}/Editor/Editor Core Lib"
+IncludeDir["Engine"] = "%{wks.location}/Engine/Core"
+IncludeDir["EditorCore"] = "%{wks.location}/Editor/Core"
 
 -- Easy way to add supported platforms and standard configs
 function StandardPlatformsAndConfigs()
@@ -69,20 +69,7 @@ function IncludeEngine()
 
     links
     {
-        "Engine"
-    }
-end
-
--- Easy way to link EditorCore
-function IncludeEditorCoreLib()
-    includedirs
-    {
-        "%{IncludeDir.EditorCoreLib}",
-    }
-
-    links
-    {
-        "EditorCoreLib",
+        "Core"
     }
 end
 
@@ -96,20 +83,19 @@ workspace "Toybox"
 		"Optimized",
 		"Release"
 	}
-	
+
 	group "_Dependencies"
 		include "3rd Party/glfw"
 		include "3rd Party/spdlog"
 	
 	group "Engine"
-		include "Engine"
+		include "Engine/Core"
+		include "Engine/Modules"
 		
 	group "Editor"
-		include "Editor/Editor Core"
-		include "Editor/Editor Core Lib"
-		include "Editor/Editor Core Interop"
-		externalproject "EditorSharp"
-		   location "Editor/Editor Sharp"
+		include "Editor/Interop"
+		externalproject "Sharp"
+		   location "Editor/Sharp"
 		   kind "WindowedApp"
 		   language "C#"
 

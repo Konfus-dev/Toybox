@@ -1,0 +1,11 @@
+#pragma once
+
+#include "tbxpch.h"
+#include "Log.h"
+#include "LogLevel.h"
+
+#define TBX_TRACE(msg)         ::Toybox::Debug::Log::Trace(msg)
+#define TBX_INFO(msg)          ::Toybox::Debug::Log::Info(msg)
+#define TBX_WARN(msg)          ::Toybox::Debug::Log::Warn(msg)
+#define TBX_ERROR(msg)         ::Toybox::Debug::Log::Error(msg)
+#define TBX_CRITICAL(msg)      ::Toybox::Debug::Log::Critical(msg)

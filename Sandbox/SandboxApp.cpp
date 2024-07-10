@@ -1,9 +1,9 @@
 #include <Toybox.h>
 
-class SandboxApp : public Toybox::Application
+class SandboxApp : public Toybox::Application::App
 {
 public:
-    SandboxApp() : Application("Sandbox") { }
+    SandboxApp() : App("Sandbox") { }
     ~SandboxApp() override = default;
 
 protected:
@@ -27,7 +27,7 @@ private:
     int _frameCount = 0;
 };
 
-Toybox::Application* Toybox::CreateApp()
+Toybox::Application::App* Toybox::Application::CreateApp()
 {
     return new SandboxApp();
 }
