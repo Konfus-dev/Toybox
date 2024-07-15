@@ -3,29 +3,32 @@
 #include "ILogger.h"
 #include "SpdLogger.h"
 
-//ILogger* _logger = new SpdLogger();
-
-void Toybox::Debug::Log::Trace(std::string msg)
+namespace Toybox::Debug
 {
+	ILogger* _logger = new SpdLogger();
 
-}
+	void Log::Trace(std::string msg)
+	{
+		_logger->Log(LogLevel::Trace, msg);
+	}
 
-void Toybox::Debug::Log::Info(std::string msg)
-{
+	void Log::Info(std::string msg)
+	{
+		_logger->Log(LogLevel::Trace, msg);
+	}
 
-}
+	void Log::Warn(std::string msg)
+	{
+		_logger->Log(LogLevel::Trace, msg);
+	}
 
-void Toybox::Debug::Log::Warn(std::string msg)
-{
+	void Log::Error(std::string msg)
+	{
+		_logger->Log(LogLevel::Trace, msg);
+	}
 
-}
-
-void Toybox::Debug::Log::Error(std::string msg)
-{
-
-}
-
-void Toybox::Debug::Log::Critical(std::string msg)
-{
-
+	void Log::Critical(std::string msg)
+	{
+		_logger->Log(LogLevel::Trace, msg);
+	}
 }

@@ -1,7 +1,7 @@
 project "Modules"
     kind "SharedLib"
     language "C++"
-    cppdialect "C++20"
+    cppdialect "C++17"
     staticruntime "Off"
 	warnings "Default"
     
@@ -17,4 +17,5 @@ project "Modules"
     }
 
     IncludeEngine()
-    StandardPlatformsAndConfigs()
+    StandardPlatforms()
+    StandardConfigs()

@@ -32,6 +32,10 @@ namespace Toybox::Application
     void App::Update()
     {
         _mainWindow->Update();
+
+        Events::AppUpdateEvent updateEvent;
+        OnEvent(updateEvent);
+
         OnUpdate();
     }
 

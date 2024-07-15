@@ -1,7 +1,7 @@
 project "Sandbox"
     kind "WindowedApp"
     language "C++"
-    cppdialect "C++20"
+    cppdialect "C++17"
     staticruntime "Off"
 
     entrypoint "mainCRTStartup"
@@ -18,4 +18,5 @@ project "Sandbox"
     }
 	
 	IncludeEngine()
-	StandardPlatformsAndConfigs()
+    StandardPlatforms()
+    StandardConfigs()

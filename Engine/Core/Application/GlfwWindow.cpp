@@ -153,7 +153,7 @@ namespace Toybox::Application
 			toyboxWindow._eventCallback(event);
 		});
     
-		TBX_INFO(std::format("Created a new glfw window: {} of size: {}, {}", title, size->Width, size->Height));
+		TBX_INFO("Created a new glfw window: {} of size: {}, {}", title, size->Width, size->Height);
 	}
 
 	GlfwWindow::~GlfwWindow()
@@ -162,42 +162,12 @@ namespace Toybox::Application
 		delete _size;
 	}
 
-	float _red = 1;
-	float _green = 0.5f;
-	float _blue = 0;
 	void GlfwWindow::Update()
 	{
 		TBX_INFO("Updating window: " + _title);
 
 		glfwPollEvents();
 		glfwSwapBuffers(_glfwWindow);
-
-		// TESTING CODE!
-		{
-			glClearColor(_red, _green, _blue, 1.0f);
-			glClear(GL_COLOR_BUFFER_BIT);
-
-			TBX_INFO("UPDATING");
-
-			if (_red > 1)
-				_red = 0;
-			if (_red < 0)
-				_red = 1;
-
-			if (_green > 1)
-				_green = 0;
-			if (_green < 0)
-				_green = 1;
-
-			if (_blue > 1)
-				_blue = 0;
-			if (_blue < 0)
-				_blue = 1;
-
-			_red += 0.01f;
-			_green += 0.01f;
-			_blue += 0.01f;
-		}
 	}
 
 	void GlfwWindow::SetVSyncEnabled(const bool enabled)

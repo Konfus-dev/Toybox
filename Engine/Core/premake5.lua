@@ -1,7 +1,7 @@
 project "Core"
     kind "StaticLib"
     language "C++"
-    cppdialect "C++20"
+    cppdialect "C++17"
     staticruntime "Off"
 	warnings "Default"
     
@@ -13,7 +13,9 @@ project "Core"
 
     defines
     {
-        "TOYBOX"
+        "TOYBOX",
+		"_CRT_SECURE_NO_WARNINGS",
+		"GLFW_INCLUDE_NONE"
     }
 
     files
@@ -38,9 +40,10 @@ project "Core"
         "opengl32.lib",
         "dwmapi.lib"
     }
-
+	
     -- Setup standard platforms and configs
-    StandardPlatformsAndConfigs()
+    StandardPlatforms()
+    StandardConfigs()
 
     -- Expose native platform methods 
 	-- which is needed to grab handles of windows for editor
@@ -62,3 +65,4 @@ project "Core"
         {
             "GLFW_EXPOSE_NATIVE_COCOA"
         }
+		

@@ -11,6 +11,7 @@ namespace Toybox::Debug
         SpdLogger();
         SpdLogger(std::string name);
         ~SpdLogger() override;
+
         void Log(int lvl, std::string msg) override;
     };
 }

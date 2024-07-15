@@ -6,8 +6,8 @@ IncludeDir["glfw"] = "%{wks.location}/3rd Party/glfw/include"
 IncludeDir["Engine"] = "%{wks.location}/Engine/Core"
 IncludeDir["EditorCore"] = "%{wks.location}/Editor/Core"
 
--- Easy way to add supported platforms and standard configs
-function StandardPlatformsAndConfigs()
+-- Easy way to add supported platforms
+function StandardPlatforms()
     -- Platforms
     filter "system:Windows"
         systemversion "latest"
@@ -29,7 +29,10 @@ function StandardPlatformsAndConfigs()
         {
             "TBX_PLATFORM_OSX"
         }
-    
+end
+
+-- Easy way to add standard configs
+function StandardConfigs()
     -- Configurations
     filter "configurations:Debug"
         runtime "Debug"
