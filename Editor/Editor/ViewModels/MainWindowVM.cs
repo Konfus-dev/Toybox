@@ -1,4 +1,4 @@
-﻿namespace EditorSharp.ViewModels;
+﻿namespace Toybox.ViewModels;
 
 public class MainWindowVM : ViewModel
 {

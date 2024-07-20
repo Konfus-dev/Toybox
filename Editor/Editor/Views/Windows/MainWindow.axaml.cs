@@ -1,7 +1,7 @@
 using Avalonia.Controls;
-using EditorSharp.ViewModels;
+using Toybox.ViewModels;
 
-namespace EditorSharp.Views.Windows;
+namespace Toybox.Views.Windows;
 
 public partial class MainWindow : Window
 {

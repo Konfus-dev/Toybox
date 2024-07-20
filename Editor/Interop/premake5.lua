@@ -1,9 +1,10 @@
 project "Interop"
     kind "SharedLib"
     language "C++"
-    cppdialect "C++17"
+    cppdialect "C++20"
     staticruntime "Off"
 	warnings "Default"
+	ignoredefaultlibraries { "MSVCRT" }
 
     targetdir ("../../" .. OutputDir .. "/bin/%{prj.name}/")
     objdir    ("../../" .. OutputDir .. "/obj/%{prj.name}/")
@@ -16,7 +17,7 @@ project "Interop"
         "./**.cpp",
         "./**.cs",
     }
-
+	
     -- Setup standard platforms and configs
 	IncludeEngine()
     StandardPlatforms()

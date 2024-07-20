@@ -1,8 +1,6 @@
-﻿using Avalonia;
-using Avalonia.Controls;
+﻿using Avalonia.Controls;
 using Avalonia.Platform;
-using EditorSharp.Interop;
-namespace EditorSharp.Views.Controls;
+namespace Toybox.Views.Controls;
 
 public partial class ThreeDViewport : UserControl
 {
@@ -22,17 +20,9 @@ public class Native3DViewport : NativeControlHost
     
     protected override IPlatformHandle CreateNativeControlCore(IPlatformHandle parent)
     {
-        var editorCoreHandle = EditorCoreInterop.LaunchViewport();
+        var editorCoreHandle = Core.Interop.LaunchViewport();
         var platformHandle = new PlatformHandle(editorCoreHandle, Name);
-        EditorCoreInterop.UpdateViewport();
         return platformHandle;
-    }
-
-    protected override Size MeasureOverride(Size availableSize)
-    {
-        // TODO: need to get the viewport updating in a loop, rn only updates when resized...
-        EditorCoreInterop.UpdateViewport();
-        return base.MeasureOverride(availableSize);
     }
 
     protected override void DestroyNativeControlCore(IPlatformHandle control)

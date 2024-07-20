@@ -1,9 +1,8 @@
 using System;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using EditorSharp.ViewModels;
-
-namespace EditorSharp;
+using Toybox.ViewModels;
+namespace Toybox;
 
 public class ViewLocator : IDataTemplate
 {

@@ -1,7 +1,7 @@
 ﻿using Avalonia;
 using Avalonia.ReactiveUI;
 using System;
-namespace EditorSharp;
+namespace Toybox;
 
 sealed class Program
 {

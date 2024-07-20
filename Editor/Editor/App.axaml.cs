@@ -1,13 +1,10 @@
-using System.Runtime.InteropServices;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
-using EditorSharp.ViewModels;
-using EditorSharp.Views;
-using EditorSharp.Views.Controls;
-using EditorSharp.Views.Windows;
+using Toybox.ViewModels;
+using Toybox.Views.Windows;
 
-namespace EditorSharp;
+namespace Toybox;
 
 public partial class App : Application
 {
