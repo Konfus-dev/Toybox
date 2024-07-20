@@ -13,8 +13,6 @@ namespace Toybox::Application
     {
         _name = name;
         _isRunning = false;
-        _mainWindow = new GlfwWindow(name, new Math::Size(1920, 1080), WindowMode::Borderless);
-        _mainWindow->SetEventCallback(TBX_BIND_EVENT_FN(App::OnEvent));
     }
 
     App::~App()
@@ -26,6 +24,8 @@ namespace Toybox::Application
     void App::Launch()
     {
         _isRunning = true;
+        _mainWindow = new GlfwWindow(_name, new Math::Size(1920, 1080), WindowMode::Windowed);
+        _mainWindow->SetEventCallback(TBX_BIND_EVENT_FN(App::OnEvent));
         OnOpen();
     }
 

@@ -3,8 +3,7 @@ OutputDir = "Build/"
 IncludeDir = {}
 IncludeDir["spdlog"] = "%{wks.location}/3rd Party/spdlog/include"
 IncludeDir["glfw"] = "%{wks.location}/3rd Party/glfw/include"
-IncludeDir["Engine"] = "%{wks.location}/Engine/Core"
-IncludeDir["EditorCore"] = "%{wks.location}/Editor/Core"
+IncludeDir["Engine"] = "%{wks.location}/Engine/Engine"
 
 -- Easy way to add supported platforms
 function StandardPlatforms()
@@ -72,7 +71,7 @@ function IncludeEngine()
 
     links
     {
-        "Core"
+        "Engine"
     }
 end
 
@@ -92,13 +91,13 @@ workspace "Toybox"
 		include "3rd Party/spdlog"
 	
 	group "Engine"
-		include "Engine/Core"
+		include "Engine/Engine"
 		include "Engine/Modules"
 		
 	group "Editor"
 		include "Editor/Interop"
-		externalproject "Sharp"
-		   location "Editor/Sharp"
+		externalproject "Editor"
+		   location "Editor/Editor"
 		   kind "WindowedApp"
 		   language "C#"
 

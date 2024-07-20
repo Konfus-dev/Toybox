@@ -9,18 +9,18 @@ public:
 protected:
     void OnOpen() override
     {
-        TBX_TRACE("OnOpen called!");
+        //TBX_TRACE("OnOpen called!");
     }
 
     void OnUpdate() override
     {
-        TBX_INFO("Update called!");
-        TBX_WARN(std::format("Frame: {}", _frameCount++));
+        //TBX_INFO("Update called!");
+        //TBX_WARN("Frame: {}", _frameCount++);
     }
 
     void OnClose() override
     {
-        TBX_TRACE("OnClose called!");
+        //TBX_TRACE("OnClose called!");
     }
 
 private:

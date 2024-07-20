@@ -33,7 +33,6 @@ namespace Toybox::Application
 			//Windowed mode (monitor = nullptr)
 			case WindowMode::Windowed:
 			{
-				glfwWindowHint(GLFW_DECORATED, false);
 				_glfwWindow = glfwCreateWindow((int)_size->Width, (int)_size->Height, _title.c_str(), nullptr, nullptr);
 				break;
 			}
@@ -46,6 +45,7 @@ namespace Toybox::Application
 			// Borderless (monitor = nullptr, decorated = false)
 			case WindowMode::Borderless:
 			{
+				glfwWindowHint(GLFW_DECORATED, false);
 				_glfwWindow = glfwCreateWindow((int)_size->Width, (int)_size->Height, _title.c_str(), nullptr, nullptr);
 				break;
 			}
@@ -201,7 +201,7 @@ namespace Toybox::Application
 		return (int)glfwGetWin32Window(_glfwWindow);
 	}
 
-	void Application::GlfwWindow::SetEventCallback(const EventCallbackFn& callback)
+	void GlfwWindow::SetEventCallback(const EventCallbackFn& callback)
 	{
 		_eventCallback = callback;
 	}

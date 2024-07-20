@@ -1,8 +1,9 @@
 project "Sandbox"
     kind "WindowedApp"
     language "C++"
-    cppdialect "C++17"
+    cppdialect "C++20"
     staticruntime "Off"
+	ignoredefaultlibraries { "MSVCRT" }
 
     entrypoint "mainCRTStartup"
     

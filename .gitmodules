@@ -1,6 +1,6 @@
 [submodule "3rd Party/spdlog"]
 	path = 3rd Party/spdlog
-	url = https://github.com/gabime/spdlog.git
+	url = https://github.com/Konfus-dev/spdlog.git
 [submodule "3rd Party/glfw"]
 	path = 3rd Party/glfw
-	url = https://github.com/glfw/glfw.git
+	url = https://github.com/Konfus-dev/glfw.git
