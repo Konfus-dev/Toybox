@@ -1,4 +1,5 @@
 OutputDir = "Build/"
+ThirdPartyOutputDir = "../../../Build/"
 
 IncludeDir = {}
 IncludeDir["spdlog"] = "%{wks.location}/3rd Party/spdlog/include"
@@ -86,9 +87,9 @@ workspace "Toybox"
 		"Release"
 	}
 
-	group "_Dependencies"
-		include "3rd Party/glfw"
-		include "3rd Party/spdlog"
+	group "_3rd Party"
+		include "3rd Party/Libraries/glfw"
+		include "3rd Party/Libraries/spdlog"
 	
 	group "Engine"
 		include "Engine/Engine"

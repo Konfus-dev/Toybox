@@ -6,6 +6,7 @@
 #include "Debug/Logging/Logging.h"
 #include "Debug/Assert.h"
 #include "Events/Events.h"
+#include <Int64.h>
 
 namespace Toybox::Application
 {
@@ -196,9 +197,10 @@ namespace Toybox::Application
 		return _title;
 	}
 
-	int GlfwWindow::GetHandle() const
+	Math::uint64 GlfwWindow::GetId() const
 	{
-		return (int)glfwGetWin32Window(_glfwWindow);
+		// TODO: make this platform agnostic (need to do diff things depending on platform!)
+		return (Math::uint64)glfwGetWin32Window(_glfwWindow);
 	}
 
 	void GlfwWindow::SetEventCallback(const EventCallbackFn& callback)

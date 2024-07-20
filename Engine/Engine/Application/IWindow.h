@@ -5,6 +5,7 @@
 #include "WindowMode.h"
 #include "Events/Event.h"
 #include "Math/Size.h"
+#include <Int64.h>
 
 namespace Toybox::Application
 {
@@ -22,7 +23,7 @@ namespace Toybox::Application
         virtual void SetSize(Math::Size* size) = 0;
 
         virtual std::string GetTitle() const = 0;
-        virtual int GetHandle() const = 0;
+        virtual Math::uint64 GetId() const = 0;
 
         virtual void SetEventCallback(const EventCallbackFn& callback) = 0;
 

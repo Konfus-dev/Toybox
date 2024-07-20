@@ -20,7 +20,7 @@ namespace Toybox::Application
         Math::Size* GetSize() const override;
 
         std::string GetTitle() const override;
-        int GetHandle() const override;
+        Math::uint64 GetId() const override;
 
         void SetEventCallback(const EventCallbackFn& callback) override;
 

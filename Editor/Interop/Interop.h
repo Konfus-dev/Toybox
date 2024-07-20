@@ -3,9 +3,9 @@
 #include "InteropApp.h"
 
 static Toybox::Interop::InteropApp* EditorCoreApp;
-TBX_EDITOR_CORE_API int LaunchViewport()
+TBX_EDITOR_CORE_API Toybox::Math::uint64 LaunchViewport()
 {
-    return EditorCoreApp->GetMainWindow()->GetHandle();
+    return EditorCoreApp->GetMainWindow()->GetId();
 }
 
 Toybox::Application::App* Toybox::Application::CreateApp()

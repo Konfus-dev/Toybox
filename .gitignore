@@ -48,7 +48,3 @@ Testing/
 Build/
 bin/
 obj/
-
-# DO NOT INGORE THESE
-!3rd Party/premake/premake5.exe
-!Editor/Toybox_Editor.sln
