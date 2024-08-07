@@ -5,7 +5,7 @@
 #include "WindowMode.h"
 #include "Events/Event.h"
 #include "Math/Size.h"
-#include <Int64.h>
+#include "Math/Int64.h"
 
 namespace Toybox::Application
 {
@@ -27,6 +27,6 @@ namespace Toybox::Application
 
         virtual void SetEventCallback(const EventCallbackFn& callback) = 0;
 
-        //virtual void SetMode(WindowMode& mode) = 0;
+        virtual void SetMode(WindowMode mode) = 0;
     };
 }

@@ -1,5 +1,5 @@
 project "Sandbox"
-    kind "WindowedApp"
+    kind "ConsoleApp"
     language "C++"
     cppdialect "C++20"
     staticruntime "Off"

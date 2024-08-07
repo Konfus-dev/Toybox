@@ -44,17 +44,17 @@ namespace Toybox::Application
         _isRunning = false;
     }
 
-    const bool App::IsRunning()
+    const bool App::IsRunning() const
     {
         return _isRunning;
     }
 
-    const std::string& App::GetName()
+    const std::string& App::GetName() const
     {
         return _name;
     }
 
-    const IWindow* App::GetMainWindow()
+    IWindow* App::GetMainWindow() const
     {
         return _mainWindow;
     }

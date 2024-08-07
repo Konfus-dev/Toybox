@@ -2,8 +2,8 @@
 
 #include "tbxpch.h"
 #include <spdlog/spdlog.h>
+#include <spdlog/sinks/stdout_color_sinks.h>
 #include "SpdLogger.h"
-#include "spdlog/sinks/stdout_color_sinks.h"
 
 std::shared_ptr<spdlog::logger> _spdLogger;
 

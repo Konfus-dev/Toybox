@@ -18,9 +18,9 @@ namespace Toybox::Application
         void Close();
     // Public getters and setters
     public:
-        const bool IsRunning();
-        const std::string& GetName();
-        const IWindow* GetMainWindow();
+        const bool IsRunning() const;
+        const std::string& GetName() const;
+        IWindow* GetMainWindow() const;
     // Protected lifetime methods
     protected:
         virtual void OnOpen() = 0;

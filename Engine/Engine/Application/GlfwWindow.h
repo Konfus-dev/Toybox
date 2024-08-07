@@ -23,11 +23,15 @@ namespace Toybox::Application
         Math::uint64 GetId() const override;
 
         void SetEventCallback(const EventCallbackFn& callback) override;
+        void SetMode(WindowMode mode) override;
 
     private:
         std::string _title;
         Math::Size* _size;
         bool _vSyncEnabled;
         EventCallbackFn _eventCallback;
+
+        void SetupCallbacks();
+        void SetupContext();
     };
 }

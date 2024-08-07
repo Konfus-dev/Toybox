@@ -2,8 +2,8 @@ OutputDir = "Build/"
 ThirdPartyOutputDir = "../../../Build/"
 
 IncludeDir = {}
-IncludeDir["spdlog"] = "%{wks.location}/3rd Party/spdlog/include"
-IncludeDir["glfw"] = "%{wks.location}/3rd Party/glfw/include"
+IncludeDir["spdlog"] = "%{wks.location}/3rd Party/Libraries/spdlog/include"
+IncludeDir["glfw"] = "%{wks.location}/3rd Party/Libraries/glfw/include"
 IncludeDir["Engine"] = "%{wks.location}/Engine/Engine"
 
 -- Easy way to add supported platforms
@@ -38,6 +38,10 @@ function StandardConfigs()
         runtime "Debug"
         optimize "On"
         symbols "On"
+		flags
+		{
+			"MultiProcessorCompile"
+		}
         defines
         {
             "TBX_DEBUG",
@@ -48,6 +52,10 @@ function StandardConfigs()
         runtime "Release"
         optimize "On"
         symbols "On"
+		flags
+		{
+			"MultiProcessorCompile"
+		}
         defines
         {
             "TBX_OPTIMIZED"
@@ -57,6 +65,10 @@ function StandardConfigs()
         runtime "Release"
         optimize "On"
         symbols "Off"
+		flags
+		{
+			"MultiProcessorCompile"
+		}
         defines 
         {
             "TBX_RELEASE"
