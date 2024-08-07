@@ -18,14 +18,23 @@
         <!-- Menu bar -->
         <Menu Grid.Row="0">
             <MenuItem Header="_File" Margin="0">
-                <Button Content="Save"></Button>
-                <Button Content="Load"></Button>
+                <Button Content="TEST"></Button>
+                <Button Content="TEST"></Button>
                 <Button Content="TEST"></Button>
             </MenuItem>
         </Menu>
-        
-        <!-- Game View -->
-        <controls:ThreeDViewport Name="ThreeDViewport" Grid.Row="1"/>
-        
+
+        <!-- Window Content -->
+        <Grid Grid.Row="1">
+
+            <!-- Game View -->
+            <controls:ThreeDViewport Name="ThreeDViewport" Grid.Row="1"/>
+
+            <!-- Asset Browser -->
+            <StackPanel Background="Gray" VerticalAlignment="Bottom" Margin="10" Height="150">
+            </StackPanel>
+
+        </Grid>
+
     </Grid>
 </Window>
