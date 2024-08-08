@@ -36,7 +36,7 @@ function StandardConfigs()
     -- Configurations
     filter "configurations:Debug"
         runtime "Debug"
-        optimize "On"
+        optimize "Off"
         symbols "On"
 		flags
 		{
@@ -61,7 +61,7 @@ function StandardConfigs()
             "TBX_OPTIMIZED"
         }
     
-    filter "configurations:Dist"
+    filter "configurations:Release"
         runtime "Release"
         optimize "On"
         symbols "Off"
