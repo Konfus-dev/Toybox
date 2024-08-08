@@ -21,5 +21,8 @@ TBX_EDITOR_CORE_API Toybox::Math::uint64 LaunchViewport()
 
 TBX_EDITOR_CORE_API void UpdateViewport()
 {
-    EditorCoreApp->Update();
+    if (EditorCoreApp != nullptr && EditorCoreApp->GetMainWindow() != nullptr)
+    { 
+        EditorCoreApp->Update();
+    }
 }

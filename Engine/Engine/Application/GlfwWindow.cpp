@@ -40,8 +40,6 @@ namespace Toybox::Application
 
 	void GlfwWindow::Update()
 	{
-		TBX_INFO("Updating window: " + _title);
-
 		glfwPollEvents();
 		glfwSwapBuffers(_glfwWindow);
 	}

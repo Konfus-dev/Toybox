@@ -5,4 +5,7 @@ public class Interop
 {
     [DllImport("../Interop/Interop.dll")]
     public static extern int LaunchViewport();
+
+    [DllImport("../Interop/Interop.dll")]
+    public static extern void UpdateViewport();
 }
