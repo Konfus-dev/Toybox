@@ -3,7 +3,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModels="clr-namespace:Toybox.ViewModels"
-        xmlns:controls="clr-namespace:Toybox.Views"
+        xmlns:controls="clr-namespace:Toybox.Views"        xmlns:docking="using:Toybox.Views.Docking"
         mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"
         x:Class="Toybox.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
@@ -12,9 +12,7 @@
     <Design.DataContext>
         <viewModels:MainWindowVM/>
     </Design.DataContext>
-    
-    <Grid Margin="0" RowDefinitions="45, *">
-        
+    <Grid RowDefinitions="Auto, *">
         <!-- Menu bar -->
         <Menu Grid.Row="0">
             <MenuItem Header="_File" Margin="0">
@@ -23,13 +21,17 @@
                 <Button Content="TEST"></Button>
             </MenuItem>
         </Menu>
-        
-        <Grid RowDefinitions="Auto, *">
-            <TextBlock Grid.Row="0" Padding="10" Width="100" Background="Gray" HorizontalAlignment="Left">Viewport: </TextBlock>
-            <!-- Game View (NOTE: Native host controls are drawn above everything, so we can't have a control rendered over it in the same window) -->
-            <controls:ThreeDViewport Grid.Row="1" Name="ThreeDViewport">
-            </controls:ThreeDViewport>
-        </Grid>
 
+        <docking:DockingHost Grid.Row="1">
+
+            <docking:DockingTabControl>
+                <TabItem Header="Viewport">
+                    <!-- Game View (NOTE: Native host controls are drawn above everything, so we can't have a control rendered over it in the same window) -->
+                    <controls:ThreeDViewport Grid.Row="1" Name="ThreeDViewport">
+                    </controls:ThreeDViewport>
+                </TabItem>
+            </docking:DockingTabControl>
+
+        </docking:DockingHost>
     </Grid>
 </Window>
