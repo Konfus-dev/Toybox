@@ -19,8 +19,6 @@ namespace Toybox::Interop
 			glClearColor(_red, _green, _blue, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT);
 
-			TBX_INFO("UPDATING");
-
 			if (_red > 1)
 				_red = 0;
 			if (_red < 0)

@@ -41,20 +41,23 @@ public class Native3DViewport : NativeControlHost
     {
         Int32 editorCoreHandle = 0;
 
-        _viewportRenderTask = Task.Run(() =>
+        void UpdateLoop()
         {
+            if (!_viewportAppLaunched)
+            {
+                editorCoreHandle = Core.Interop.LaunchViewport();
+                _viewportAppLaunched = true;
+            }
+
             while (true)
             {
-                if (!_viewportAppLaunched)
-                {
-                    editorCoreHandle = Core.Interop.LaunchViewport();
-                    _viewportAppLaunched = true;
-                }
-
                 Core.Interop.UpdateViewport();
             }
-        });
+        }
 
+        _viewportRenderTask = Task.Factory.StartNew(
+            action: UpdateLoop, 
+            creationOptions: TaskCreationOptions.LongRunning);
 
         while (!_viewportAppLaunched)
         {
