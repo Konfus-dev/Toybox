@@ -2,7 +2,7 @@ using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Toybox.ViewModels;
-using Toybox.Views.Windows;
+using Toybox.Views;
 
 namespace Toybox;
 

@@ -2,7 +2,7 @@
 using Avalonia.Platform;
 using System;
 using System.Threading.Tasks;
-namespace Toybox.Views.Controls;
+namespace Toybox.Views;
 
 public partial class ThreeDViewport : UserControl
 {

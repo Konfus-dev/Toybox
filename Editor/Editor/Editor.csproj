@@ -11,6 +11,8 @@
       <Configurations>Debug;Optimized;Release</Configurations>
       <Platforms>x64</Platforms>
       <PlatformTarget>x64</PlatformTarget>
+      <AssemblyName>Editor</AssemblyName>
+      <RootNamespace>Toybox</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -18,6 +20,9 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Optimized' ">
     <Optimize>true</Optimize>
     <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Label="Avalonia">
+    <AvaloniaNameGeneratorDefaultFieldModifier>Public</AvaloniaNameGeneratorDefaultFieldModifier>
   </PropertyGroup>
 
   <!--Resources-->
@@ -27,13 +32,14 @@
 
   <!--Packages-->
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="11.0.10" />
-    <PackageReference Include="Avalonia.Desktop" Version="11.0.10" />
-    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.10" />
-    <PackageReference Include="Avalonia.Fonts.Inter" Version="11.0.10" />
-    <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.10" />
     <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
-    <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.10" />
+    <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.1.2" />
+      
+    <PackageReference Include="Avalonia" Version="11.1.2" />
+    <PackageReference Include="Avalonia.Desktop" Version="11.1.2" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.1.2" />
+    <PackageReference Include="Avalonia.Fonts.Inter" Version="11.1.2" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="11.1.2" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Interop\Interop.vcxproj" />

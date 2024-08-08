@@ -1,7 +1,7 @@
 using Avalonia.Controls;
 using Toybox.ViewModels;
 
-namespace Toybox.Views.Windows;
+namespace Toybox.Views;
 
 public partial class MainWindow : Window
 {

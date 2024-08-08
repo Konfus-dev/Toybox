@@ -3,9 +3,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModels="clr-namespace:Toybox.ViewModels"
-        xmlns:controls="clr-namespace:Toybox.Views.Controls"
+        xmlns:controls="clr-namespace:Toybox.Views"
         mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"
-        x:Class="Toybox.Views.Windows.MainWindow"
+        x:Class="Toybox.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="Toybox">
 
@@ -23,17 +23,12 @@
                 <Button Content="TEST"></Button>
             </MenuItem>
         </Menu>
-
-        <!-- Window Content -->
-        <Grid Grid.Row="1">
-
-            <!-- Game View -->
-            <controls:ThreeDViewport Name="ThreeDViewport" Grid.Row="1"/>
-
-            <!-- Asset Browser -->
-            <StackPanel Background="Gray" VerticalAlignment="Bottom" Margin="10" Height="150">
-            </StackPanel>
-
+        
+        <Grid RowDefinitions="Auto, *">
+            <TextBlock Grid.Row="0" Padding="10" Width="100" Background="Gray" HorizontalAlignment="Left">Viewport: </TextBlock>
+            <!-- Game View (NOTE: Native host controls are drawn above everything, so we can't have a control rendered over it in the same window) -->
+            <controls:ThreeDViewport Grid.Row="1" Name="ThreeDViewport">
+            </controls:ThreeDViewport>
         </Grid>
 
     </Grid>

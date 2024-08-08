@@ -2,7 +2,7 @@ using System;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
 using Toybox.ViewModels;
-namespace Toybox;
+namespace Toybox.Views;
 
 public class ViewLocator : IDataTemplate
 {
