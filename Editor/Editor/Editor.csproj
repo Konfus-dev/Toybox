@@ -29,6 +29,9 @@
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Remove="C:\Users\jercl\.nuget\packages\sukiui\5.3.0\contentFiles\any\netstandard2.0\suki_photo.ico" />
+  </ItemGroup>
 
   <!--Packages-->
   <ItemGroup>
@@ -37,9 +40,10 @@
       
     <PackageReference Include="Avalonia" Version="11.1.2" />
     <PackageReference Include="Avalonia.Desktop" Version="11.1.2" />
-    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.1.2" />
     <PackageReference Include="Avalonia.Fonts.Inter" Version="11.1.2" />
     <PackageReference Include="Avalonia.ReactiveUI" Version="11.1.2" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.1.2" />
+    <PackageReference Include="SukiUI" Version="6.0.0-beta7" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Interop\Interop.vcxproj" />
